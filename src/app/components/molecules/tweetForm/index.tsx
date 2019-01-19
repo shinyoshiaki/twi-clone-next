@@ -5,6 +5,7 @@ export interface Props {
   name?: string;
   code?: string;
   submit: (text: string) => void;
+  style?: any;
 }
 
 export default class TweetFormMol extends React.Component<
@@ -17,13 +18,16 @@ export default class TweetFormMol extends React.Component<
   }
 
   render() {
-    const { submit, name, code } = this.props;
+    const { submit, name, code, style } = this.props;
     return (
-      <div>
-        <Segment>
+      <div style={style}>
+        <div style={{ textAlign: "center" }}>Tweet</div>
+        <Segment style={{ backgroundColor: "#E8F5FE" }}>
           <div>
             <TextArea
-              placeholder="tweet"
+              rows={3}
+              placeholder="what are u doing?"
+              maxLength={120}
               onChange={e => {
                 const input = e.target.value;
                 this.setState({ text: input });
@@ -35,10 +39,9 @@ export default class TweetFormMol extends React.Component<
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <Button>picture</Button>
             <Button
+              background="#259FF2"
               onClick={() => {
-                if (name && code) {
-                  submit(this.state.text);
-                }
+                submit(this.state.text);
                 this.setState({ text: "" });
               }}
             >

@@ -20,7 +20,7 @@ export default class MyDocument extends Document<{ css: any }> {
     return (
       <html>
         <Head>
-          <title>With Emotion</title>
+          <title>Twitter clone</title>
           <style dangerouslySetInnerHTML={{ __html: this.props.css }} />
         </Head>
         <body>

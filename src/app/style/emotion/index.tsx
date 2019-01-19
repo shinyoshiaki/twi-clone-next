@@ -4,7 +4,7 @@ export const Button = styled.button(
   (_: { size?: string; color?: string; background?: string }) => ({
     minWidth: 100,
     height: 32,
-    borderRadius: 4,
+    borderRadius: 5,
     border: "none",
     padding: "0 16",
     color: _.color ? _.color : "white",
@@ -54,4 +54,8 @@ export const Divider = styled.div({
 
 export const Header = styled.div({});
 
-export const TextArea = styled.textarea({});
+export const TextArea = styled.textarea({
+  borderRadius: 10,
+  width: "100%",
+  resize: "none"
+});

@@ -8,6 +8,7 @@ import { postTweetMod } from "../../../../modules/tweet";
 import { Dispatch } from "redux";
 import { Button, TextArea } from "../../../../style/emotion";
 import ModalAtom from "../../../../components/atoms/modal";
+import TweetFormMol from "../../../../components/molecules/tweetForm";
 
 interface Props extends UserState {
   dispatch: Dispatch;
@@ -59,9 +60,14 @@ class LayoutOrg extends React.Component<Props, {}> {
                 background="#259FF2"
                 style={{ marginRight: 20 }}
                 label="Tweet"
-              >
-                Tweet
-              </ModalAtom>
+                Content={close => (
+                  <TweetFormMol
+                    submit={() => {
+                      close();
+                    }}
+                  />
+                )}
+              />
             </div>
           </div>
         </div>
