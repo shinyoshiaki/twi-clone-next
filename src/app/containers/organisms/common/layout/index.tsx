@@ -7,6 +7,7 @@ import { UserState } from "../../../../modules/user";
 import { postTweetMod } from "../../../../modules/tweet";
 import { Dispatch } from "redux";
 import { Button, TextArea } from "../../../../style/emotion";
+import ModalAtom from "../../../../components/atoms/modal";
 
 interface Props extends UserState {
   dispatch: Dispatch;
@@ -26,13 +27,14 @@ class LayoutOrg extends React.Component<Props, {}> {
   };
 
   render() {
+    const { name } = this.props;
     return (
       <div
         style={{
           minHeight: "100vh"
         }}
       >
-        <div style={{ width: "100%", position: "fixed", zIndex: 9999 }}>
+        <div style={{ width: "100%", position: "fixed", zIndex: 9998 }}>
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <div
               style={{
@@ -51,14 +53,15 @@ class LayoutOrg extends React.Component<Props, {}> {
             </div>
             <div style={{ display: "flex" }}>
               <TextArea style={{ marginRight: 20 }} />
-              <Button style={{ marginRight: 20 }}>Account</Button>
-              <Button
+              <Button style={{ marginRight: 20 }}>{name}</Button>
+              <ModalAtom
                 color="white"
                 background="#259FF2"
                 style={{ marginRight: 20 }}
+                label="Tweet"
               >
                 Tweet
-              </Button>
+              </ModalAtom>
             </div>
           </div>
         </div>

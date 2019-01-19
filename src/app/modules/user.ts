@@ -41,6 +41,7 @@ export const signUpMod = async (
   dispatch: Dispatch<any>
 ) => {
   return new Promise<boolean>(async (resolve, reject) => {
+    console.log("signup");
     await apiAction(
       { dir: "/users/signup", data: { name, password } },
       ActionName.SIGNUP,
