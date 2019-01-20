@@ -3,6 +3,7 @@ import TweetFormMol from "../components/molecules/tweetForm";
 
 import TimelineMol, { TimelineProps } from "../components/molecules/timeline";
 import { makeITweetMock } from "../components/atoms/tweet/index.stories";
+import InputAtom from "../components/atoms/search";
 
 export const makeTimelinePropsMock = (
   payload: { [key in keyof TimelineProps]?: TimelineProps[key] } = {}
@@ -24,6 +25,7 @@ const Debug: FunctionComponent<{}> = ({}) => {
     <div>
       <TweetFormMol submit={() => {}} />
       <TimelineMol timeline={makeTimelinePropsMock().timeline} />
+      <InputAtom submit={v => console.log({ v })} />
     </div>
   );
 };

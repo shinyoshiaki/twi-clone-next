@@ -4,11 +4,12 @@ import { connect } from "react-redux";
 import { ReduxState } from "../../../../modules/createStore";
 import { UserState } from "../../../../modules/user";
 
-import { postTweetMod } from "../../../../modules/tweet";
+import { postTweetMod, searchTweetMod } from "../../../../modules/tweet";
 import { Dispatch } from "redux";
 import { Button, TextArea, Divider, Input } from "../../../../style/emotion";
 import ModalAtom from "../../../../components/atoms/modal";
 import TweetFormMol from "../../../../components/molecules/tweetForm";
+import SearchAtom from "../../../../components/atoms/search";
 
 interface Props extends UserState {
   dispatch: Dispatch;
@@ -25,6 +26,11 @@ class LayoutOrg extends React.Component<Props, {}> {
       const code = id;
       await postTweetMod({ code, session, text }, dispatch).catch(console.log);
     }
+  };
+
+  handleSearch = async (word: string) => {
+    router.push("/search");
+    await searchTweetMod(word, this.props.dispatch);
   };
 
   render() {
@@ -45,7 +51,11 @@ class LayoutOrg extends React.Component<Props, {}> {
                 display: "flex"
               }}
             >
-              <Button color="#66747E" background="white">
+              <Button
+                color="#66747E"
+                background="white"
+                onClick={() => router.push("/home")}
+              >
                 Home
               </Button>
               <Button color="#66747E" background="white">
@@ -56,7 +66,12 @@ class LayoutOrg extends React.Component<Props, {}> {
               </Button>
             </div>
             <div style={{ display: "flex", paddingTop: 5 }}>
-              <Input style={{ marginRight: 20 }} />
+              <SearchAtom
+                submit={v => {
+                  this.handleSearch(v);
+                }}
+                style={{ marginRight: 20 }}
+              />
               <Button style={{ marginRight: 20 }}>{name}</Button>
               <ModalAtom
                 color="white"
@@ -78,7 +93,7 @@ class LayoutOrg extends React.Component<Props, {}> {
           <Divider />
         </div>
         <div>
-          <div style={{ flex: 1, paddingTop: 70, background: "#E5EBEF" }}>
+          <div style={{ flex: 1, paddingTop: 50, background: "#E5EBEF" }}>
             {<div>{this.props.children}</div>}
           </div>
         </div>

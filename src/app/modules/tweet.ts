@@ -4,12 +4,16 @@ import { apiAction } from "./utill/api";
 
 export interface TweetState {
   timeline: ITweet[];
-  ui: { post: boolean; get: boolean };
+  searchRes: ITweet[];
+  searchWord: string;
+  ui: { post: boolean; get: boolean; search: boolean };
 }
 
 const initialTweetState: TweetState = {
   timeline: [],
-  ui: { post: false, get: false }
+  searchRes: [],
+  searchWord: "",
+  ui: { post: false, get: false, search: false }
 };
 
 const START = "_start";
@@ -17,10 +21,9 @@ const FAIL = "_fail";
 
 enum ActionName {
   POST = "POST",
-  GET = "GET"
+  GET = "GET",
+  SEARCH = "SEARCH"
 }
-
-type Actions = Post | Get;
 
 interface Post extends Action {
   type: ActionName.POST;
@@ -59,13 +62,31 @@ export const getTweetMod = async (
 ) => {
   return new Promise<boolean>(async (resolve, reject) => {
     await apiAction(
-      { dir: "/tweet/get", data: { code, session } },
+      { dir: "/tweet/get/mine", data: { code, session } },
       ActionName.GET,
       dispatch
     ).catch(() => reject("fail"));
     resolve(true);
   });
 };
+
+interface Search extends Action {
+  type: ActionName.SEARCH;
+  payload: { tweets: ITweet[]; word: string };
+}
+
+export const searchTweetMod = async (word: string, dispatch: Dispatch<any>) => {
+  return new Promise<boolean>(async (resolve, reject) => {
+    await apiAction(
+      { dir: "/tweet/get/search", data: { word } },
+      ActionName.SEARCH,
+      dispatch
+    ).catch(() => reject("fail"));
+    resolve(true);
+  });
+};
+
+type Actions = Post | Get | Search;
 
 export default function reducer(state = initialTweetState, action: Actions) {
   switch (action.type) {
@@ -93,6 +114,20 @@ export default function reducer(state = initialTweetState, action: Actions) {
         ...state,
         timeline: action.payload.tweets,
         ui: { ...state.ui, get: false }
+      } as TweetState;
+    }
+    case ActionName.SEARCH + START: {
+      return { ...state, ui: { ...state.ui, search: true } } as TweetState;
+    }
+    case ActionName.SEARCH + FAIL: {
+      return { ...state, ui: { ...state.ui, search: false } } as TweetState;
+    }
+    case ActionName.SEARCH: {
+      return {
+        ...state,
+        searchRes: action.payload.tweets,
+        searchWord: action.payload.word,
+        ui: { ...state.ui, search: false }
       } as TweetState;
     }
     default:
