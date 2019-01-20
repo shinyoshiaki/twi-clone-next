@@ -26,7 +26,7 @@ class TimelineOrg extends React.Component<Props> {
     const { timeline } = this.props.tweet;
     return (
       <div>
-        <TimelineMol timeline={timeline} onClickName={this.handleClickName} />
+        <TimelineMol timeline={timeline} onClickTweetName={this.handleClickName} />
       </div>
     );
   }

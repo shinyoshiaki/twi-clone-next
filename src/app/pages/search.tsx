@@ -39,7 +39,7 @@ class Page extends React.Component<Props> {
         <Center style={{ minHeight: "95vh", paddingTop: 30 }}>
           <TimelineMol
             timeline={this.props.tweets}
-            onClickName={this.handleClickName}
+            onClickTweetName={this.handleClickName}
           />
         </Center>
       </LayoutOrg>

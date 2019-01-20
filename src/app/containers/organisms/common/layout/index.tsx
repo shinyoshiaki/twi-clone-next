@@ -3,8 +3,7 @@ import router from "next/router";
 import { connect } from "react-redux";
 import { ReduxState } from "../../../../modules/createStore";
 import { UserState } from "../../../../modules/user";
-
-import { postTweetMod, searchTweetMod } from "../../../../modules/tweet";
+import { postTweetMod } from "../../../../modules/tweet";
 import { Dispatch } from "redux";
 import { Button, Divider } from "../../../../style/emotion";
 import ModalAtom from "../../../../components/atoms/modal";

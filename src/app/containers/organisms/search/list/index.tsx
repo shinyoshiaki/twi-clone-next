@@ -22,7 +22,10 @@ class SearchResOrg extends React.Component<Props> {
     const { searchRes } = this.props.tweet;
     return (
       <div>
-        <TimelineMol timeline={searchRes} onClickName={this.handleClickName} />
+        <TimelineMol
+          timeline={searchRes}
+          onClickTweetName={this.handleClickName}
+        />
       </div>
     );
   }

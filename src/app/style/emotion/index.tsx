@@ -67,3 +67,7 @@ export const TextArea = styled.textarea({
   width: "100%",
   resize: "none"
 });
+
+export const SpaceRight = styled.div((props: { distance?: number }) => ({
+  paddingRight: props.distance ? props.distance : 30
+}));
