@@ -61,7 +61,7 @@ export const Divider = styled.div({
   marginTop: 10
 });
 
-export const Header = styled.div({});
+export const Header = styled.div({ fontWeight: "bold" });
 
 export const TextArea = styled.textarea({
   borderRadius: 10,

@@ -6,7 +6,7 @@ import { UserState } from "../../../../modules/user";
 
 import { postTweetMod, searchTweetMod } from "../../../../modules/tweet";
 import { Dispatch } from "redux";
-import { Button, TextArea, Divider, Input } from "../../../../style/emotion";
+import { Button, Divider } from "../../../../style/emotion";
 import ModalAtom from "../../../../components/atoms/modal";
 import TweetFormMol from "../../../../components/molecules/tweetForm";
 import SearchAtom from "../../../../components/atoms/search";
@@ -36,7 +36,7 @@ class LayoutOrg extends React.Component<Props, {}> {
   render() {
     const { name } = this.props;
     return (
-      <div>
+      <div style={{ backgroundColor: "#E4EAEE" }}>
         <div
           style={{
             width: "100%",
@@ -48,7 +48,8 @@ class LayoutOrg extends React.Component<Props, {}> {
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <div
               style={{
-                display: "flex"
+                display: "flex",
+                paddingTop: 10
               }}
             >
               <Button
@@ -65,7 +66,7 @@ class LayoutOrg extends React.Component<Props, {}> {
                 Message
               </Button>
             </div>
-            <div style={{ display: "flex", paddingTop: 5 }}>
+            <div style={{ display: "flex", paddingTop: 10 }}>
               <SearchAtom
                 submit={v => {
                   this.handleSearch(v);
@@ -93,7 +94,7 @@ class LayoutOrg extends React.Component<Props, {}> {
           <Divider />
         </div>
         <div>
-          <div style={{ flex: 1, paddingTop: 50, background: "#E5EBEF" }}>
+          <div style={{ flex: 1, paddingTop: 70, background: "#E5EBEF" }}>
             {<div>{this.props.children}</div>}
           </div>
         </div>
