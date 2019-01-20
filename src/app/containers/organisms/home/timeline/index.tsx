@@ -19,11 +19,14 @@ class TimelineOrg extends React.Component<Props> {
       getTweetMod(id, session, this.props.dispatch);
     }
   }
+
+  handleClickName = () => {};
+
   render() {
     const { timeline } = this.props.tweet;
     return (
       <div>
-        <TimelineMol timeline={timeline} />
+        <TimelineMol timeline={timeline} onClickName={this.handleClickName} />
       </div>
     );
   }

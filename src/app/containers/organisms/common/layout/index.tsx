@@ -94,7 +94,7 @@ class LayoutOrg extends React.Component<Props, {}> {
           <Divider />
         </div>
         <div>
-          <div style={{ flex: 1, paddingTop: 70, background: "#E5EBEF" }}>
+          <div style={{ flex: 1, paddingTop: 50, background: "#E5EBEF" }}>
             {<div>{this.props.children}</div>}
           </div>
         </div>

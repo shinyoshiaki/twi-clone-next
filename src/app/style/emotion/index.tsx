@@ -36,7 +36,6 @@ export const Middle = styled.div({
 export const Center = styled.div((props: { row?: boolean }) => ({
   width: "100%",
   display: "flex",
-  justifyContent: "center",
   alignItems: "center",
   flexDirection: props.row ? "row" : "column"
 }));

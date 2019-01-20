@@ -1,8 +1,12 @@
 import * as React from "react";
 import { ITweet } from "../../../const/index";
 import { Segment, Header, Button } from "../../../style/emotion";
+import { css } from "emotion";
 
-export default class TweetAtoms extends React.Component<{ tweet: ITweet }> {
+export default class TweetAtoms extends React.Component<{
+  tweet: ITweet;
+  onClickName: (v: string) => void;
+}> {
   render() {
     const { name, code, time, text } = this.props.tweet;
     return (
@@ -10,7 +14,14 @@ export default class TweetAtoms extends React.Component<{ tweet: ITweet }> {
         <Segment nospace>
           <div style={{ paddingLeft: 20 }}>
             <div style={{ display: "flex" }}>
-              <Header>{name}</Header>
+              <Header
+                onClick={() => {
+                  this.props.onClickName(name);
+                }}
+                className={css({ ":hover": { color: "#4DB1F4" } })}
+              >
+                {name}
+              </Header>
               {"　"}
               <div style={{ color: "gray" }}>
                 {code.slice(0, 10)} - {time}

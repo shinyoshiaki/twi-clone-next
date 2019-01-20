@@ -5,6 +5,7 @@ import { Dispatch } from "redux";
 import TimelineMol from "../../../../components/molecules/timeline";
 import { TweetState } from "../../../../modules/tweet";
 import { UserState } from "../../../../modules/user";
+import router from "next/router";
 
 interface Props {
   dispatch: Dispatch<any>;
@@ -13,11 +14,15 @@ interface Props {
 }
 
 class SearchResOrg extends React.Component<Props> {
+  handleClickName = () => {
+    router.push("/user");
+  };
+
   render() {
     const { searchRes } = this.props.tweet;
     return (
       <div>
-        <TimelineMol timeline={searchRes} />
+        <TimelineMol timeline={searchRes} onClickName={this.handleClickName} />
       </div>
     );
   }

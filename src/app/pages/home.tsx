@@ -12,7 +12,8 @@ const Home: FunctionComponent = () => {
         style={{
           display: "flex",
           justifyContent: "center",
-          minHeight: "95vh"
+          minHeight: "95vh",
+          paddingTop: 20
         }}
       >
         <MyProfile />

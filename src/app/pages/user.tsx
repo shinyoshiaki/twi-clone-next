@@ -9,7 +9,7 @@ import { Center } from "../style/emotion";
 
 interface Props extends TweetState {}
 
-const Home: FunctionComponent<Props> = props => {
+const User: FunctionComponent<Props> = props => {
   return (
     <LoadingOverlay
       active={props.ui.search}
@@ -19,8 +19,8 @@ const Home: FunctionComponent<Props> = props => {
       <LayoutOrg>
         <div
           style={{
-            background: "#259FF2",
-            color: "white",
+            background: "white",
+            color: "#66747E",
             fontSize: 30,
             padding: 10
           }}
@@ -36,5 +36,5 @@ const Home: FunctionComponent<Props> = props => {
 };
 
 export default connect((state: ReduxState) => Object.assign({}, state.tweet))(
-  Home
+  User
 );
