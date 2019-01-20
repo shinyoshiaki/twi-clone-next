@@ -14,8 +14,8 @@ interface Props {
 }
 
 class SearchResOrg extends React.Component<Props> {
-  handleClickName = () => {
-    router.push("/user");
+  handleClickName = v => {
+    router.push(`/user?code=${v}`);
   };
 
   render() {

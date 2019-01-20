@@ -28,9 +28,8 @@ class LayoutOrg extends React.Component<Props, {}> {
     }
   };
 
-  handleSearch = async (word: string) => {
-    router.push("/search");
-    await searchTweetMod(word, this.props.dispatch);
+  handleSearch = word => {
+    router.push(`/search?word=${word}`);
   };
 
   render() {

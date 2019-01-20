@@ -1,21 +1,30 @@
-import React, { FunctionComponent } from "react";
-import { connect } from "react-redux";
+import * as React from "react";
 import LayoutOrg from "../containers/organisms/common/layout";
-import { ReduxState } from "../modules/createStore";
-import { TweetState } from "../modules/tweet";
-import SearchRes from "../containers/organisms/search/list";
-import LoadingOverlay from "react-loading-overlay";
+import router from "next/router";
 import { Center } from "../style/emotion";
+import { req, ITweet } from "../const";
+import TimelineMol from "../components/molecules/timeline";
 
-interface Props extends TweetState {}
+interface Props {
+  word: string;
+  tweets: ITweet[];
+}
 
-const Home: FunctionComponent<Props> = props => {
-  return (
-    <LoadingOverlay
-      active={props.ui.search}
-      spinner
-      text="Loading your content..."
-    >
+class Page extends React.Component<Props> {
+  static async getInitialProps({ query }) {
+    const res = await req
+      .post("/tweet/get/search", { word: query.word })
+      .catch(console.log);
+    const result = res ? res.data : [];
+    return { word: query.word, tweets: result.tweets };
+  }
+
+  handleClickName = v => {
+    router.push(`/user?code=${v}`);
+  };
+
+  render() {
+    return (
       <LayoutOrg>
         <div
           style={{
@@ -25,16 +34,17 @@ const Home: FunctionComponent<Props> = props => {
             padding: 10
           }}
         >
-          {props.searchWord}
+          {this.props.word}
         </div>
         <Center style={{ minHeight: "95vh", paddingTop: 30 }}>
-          <SearchRes />
+          <TimelineMol
+            timeline={this.props.tweets}
+            onClickName={this.handleClickName}
+          />
         </Center>
       </LayoutOrg>
-    </LoadingOverlay>
-  );
-};
+    );
+  }
+}
 
-export default connect((state: ReduxState) => Object.assign({}, state.tweet))(
-  Home
-);
+export default Page;

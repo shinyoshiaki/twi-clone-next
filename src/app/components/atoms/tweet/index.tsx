@@ -5,7 +5,7 @@ import { css } from "emotion";
 
 export default class TweetAtoms extends React.Component<{
   tweet: ITweet;
-  onClickName: (v: string) => void;
+  onClickName: (code: string) => void;
 }> {
   render() {
     const { name, code, time, text } = this.props.tweet;
@@ -16,7 +16,7 @@ export default class TweetAtoms extends React.Component<{
             <div style={{ display: "flex" }}>
               <Header
                 onClick={() => {
-                  this.props.onClickName(name);
+                  this.props.onClickName(code);
                 }}
                 className={css({ ":hover": { color: "#4DB1F4" } })}
               >
