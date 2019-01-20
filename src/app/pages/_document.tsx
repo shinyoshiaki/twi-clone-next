@@ -25,9 +25,8 @@ export default class MyDocument extends Document<{ css: any }> {
         </Head>
         <body
           style={{
-            height: "100vh",
             width: "100vw",
-            overflow: "hidden",
+            overflowX: "hidden",
             padding: 0,
             margin: 0
           }}

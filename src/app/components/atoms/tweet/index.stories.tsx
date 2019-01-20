@@ -11,8 +11,8 @@ export const makeITweetMock = (
     {},
     {
       number: 0,
-      name: "this is mock string",
-      code: "this is mock string",
+      name: "name",
+      code: "id",
       time: "this is mock string",
       text: "this is mock string"
     },

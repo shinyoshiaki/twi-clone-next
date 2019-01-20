@@ -6,7 +6,7 @@ import { UserState } from "../../../../modules/user";
 
 import { postTweetMod } from "../../../../modules/tweet";
 import { Dispatch } from "redux";
-import { Button, TextArea } from "../../../../style/emotion";
+import { Button, TextArea, Divider, Input } from "../../../../style/emotion";
 import ModalAtom from "../../../../components/atoms/modal";
 import TweetFormMol from "../../../../components/molecules/tweetForm";
 
@@ -30,12 +30,15 @@ class LayoutOrg extends React.Component<Props, {}> {
   render() {
     const { name } = this.props;
     return (
-      <div
-        style={{
-          minHeight: "100vh"
-        }}
-      >
-        <div style={{ width: "100%", position: "fixed", zIndex: 9998 }}>
+      <div>
+        <div
+          style={{
+            width: "100%",
+            position: "fixed",
+            zIndex: 9998,
+            background: "white"
+          }}
+        >
           <div style={{ display: "flex", justifyContent: "space-between" }}>
             <div
               style={{
@@ -52,8 +55,8 @@ class LayoutOrg extends React.Component<Props, {}> {
                 Message
               </Button>
             </div>
-            <div style={{ display: "flex" }}>
-              <TextArea style={{ marginRight: 20 }} />
+            <div style={{ display: "flex", paddingTop: 5 }}>
+              <Input style={{ marginRight: 20 }} />
               <Button style={{ marginRight: 20 }}>{name}</Button>
               <ModalAtom
                 color="white"
@@ -62,17 +65,20 @@ class LayoutOrg extends React.Component<Props, {}> {
                 label="Tweet"
                 Content={close => (
                   <TweetFormMol
-                    submit={() => {
+                    submit={text => {
+                      this.handleTweet(text);
                       close();
                     }}
+                    style={{ width: "50vw" }}
                   />
                 )}
               />
             </div>
           </div>
+          <Divider />
         </div>
         <div>
-          <div style={{ flex: 1, paddingTop: 100 }}>
+          <div style={{ flex: 1, paddingTop: 70, background: "#E5EBEF" }}>
             {<div>{this.props.children}</div>}
           </div>
         </div>

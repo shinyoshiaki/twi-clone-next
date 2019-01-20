@@ -8,7 +8,7 @@ const url =
     ? "https://echosome.tk:9443"
     : "http://localhost:1323";
 
-export const req = axios.create({ baseURL: "https://echosome.tk:9443" });
+export const req = axios.create({ baseURL: url });
 
 const START = "_start";
 const FAIL = "_fail";
@@ -22,6 +22,7 @@ export const apiAction = async (
     dispatch({ type: type + START });
     console.log(request.data);
     const res = await req.post(request.dir, request.data).catch(e => {
+      console.log({ e });
       dispatch({ type: type + FAIL });
       reject("fail");
     });

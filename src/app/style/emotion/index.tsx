@@ -1,7 +1,12 @@
 import styled from "@emotion/styled";
 
 export const Button = styled.button(
-  (_: { size?: string; color?: string; background?: string }) => ({
+  (_: {
+    size?: string;
+    color?: string;
+    background?: string;
+    hover?: string;
+  }) => ({
     minWidth: 100,
     height: 32,
     borderRadius: 5,
@@ -9,11 +14,15 @@ export const Button = styled.button(
     padding: "0 16",
     color: _.color ? _.color : "white",
     background: _.background ? _.background : "#66747E",
-    ":hover": { background: "#259FF2" }
+    ":hover": { background: _.hover ? _.hover : "#259FF2" }
   })
 );
 
-export const Input = styled.input({});
+export const Input = styled.input({
+  borderRadius: 5,
+  borderColor: "gray",
+  borderWidth: 1
+});
 
 export const Middle = styled.div({
   width: "100%",
@@ -32,14 +41,14 @@ export const Center = styled.div((props: { row?: boolean }) => ({
   flexDirection: props.row ? "row" : "column"
 }));
 
-export const Segment = styled.div({
+export const Segment = styled.div((props: { nospace?: boolean }) => ({
   borderWidth: 1,
   border: "thin solid",
-  margin: 10,
   borderColor: "#66747E",
   background: "white",
+  margin: props.nospace ? 0 : 10,
   padding: 10
-});
+}));
 
 export const Container = styled.div({
   padding: 20,

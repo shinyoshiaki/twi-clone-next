@@ -7,17 +7,27 @@ export default class TweetAtoms extends React.Component<{ tweet: ITweet }> {
     const { name, code, time, text } = this.props.tweet;
     return (
       <div>
-        <Segment>
-          <div style={{ display: "flex" }}>
-            <Header>{name}</Header>
-            {"　"}
-            {code} - {time}
+        <Segment nospace>
+          <div style={{ paddingLeft: 20 }}>
+            <div style={{ display: "flex" }}>
+              <Header>{name}</Header>
+              {"　"}
+              <div style={{ color: "gray" }}>
+                {code.slice(0, 10)} - {time}
+              </div>
+            </div>
+            <p>{text}</p>
           </div>
-          <p>{text}</p>
           <div style={{ display: "flex" }}>
-            <Button size="tiny">reply</Button>
-            <Button size="tiny">retweet</Button>
-            <Button size="tiny">favorite</Button>
+            <Button size="tiny" background="white" color="gray" hover="#DE295E">
+              reply
+            </Button>
+            <Button size="tiny" background="white" color="gray" hover="#DE295E">
+              retweet
+            </Button>
+            <Button size="tiny" background="white" color="gray" hover="#DE295E">
+              favorite
+            </Button>
           </div>
         </Segment>
       </div>

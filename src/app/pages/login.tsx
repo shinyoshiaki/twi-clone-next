@@ -13,7 +13,7 @@ const Login: FunctionComponent<UserState> = props => {
       spinner
       text="Loading your content..."
     >
-      <div style={{ height: "100vh" }}>
+      <div style={{ height: "95vh" }}>
         <div style={{ display: "flex", justifyContent: "center" }}>
           <div
             style={{

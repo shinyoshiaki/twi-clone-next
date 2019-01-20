@@ -7,7 +7,9 @@ import { ReduxState } from "../modules/createStore";
 const Home: FunctionComponent = () => {
   return (
     <LayoutOrg>
-      <TimelineOrg />
+      <div style={{ minHeight: "95vh" }}>
+        <TimelineOrg />
+      </div>
     </LayoutOrg>
   );
 };

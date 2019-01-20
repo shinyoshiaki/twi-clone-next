@@ -8,5 +8,6 @@
     "target": "es2017",
     "baseUrl": "./"
   },
-  "compileOnSave": true
+  "compileOnSave": true,
+  "rootDirs": ["src", "stories"]
 }

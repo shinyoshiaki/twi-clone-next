@@ -14,8 +14,8 @@ export default class TimelineMol extends React.Component<TimelineProps, {}> {
     return (
       <div style={{ width: "100%" }}>
         <Center>
-          {timeline.reverse().map(tweet => (
-            <div style={{ width: "50%" }} key={tweet.number}>
+          {timeline.reverse().map((tweet,i) => (
+            <div style={{ width: "50%" }} key={i}>
               <TweetAtoms tweet={tweet} />
             </div>
           ))}

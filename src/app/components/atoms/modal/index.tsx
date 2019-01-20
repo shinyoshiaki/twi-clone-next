@@ -40,7 +40,7 @@ class ModalAtom extends React.Component<
           style={{
             overlay: { background: "gray", zIndex: 9999 },
             content: {
-              top: "20%",
+              top: "50%",
               left: "50%",
               right: "auto",
               bottom: "auto",
