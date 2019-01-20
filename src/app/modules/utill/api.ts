@@ -1,9 +1,15 @@
 import axios from "axios";
 import { Dispatch } from "redux";
 
+console.log(process.env.NODE_ENV);
+
+const url =
+  process.env.NODE_ENV === "production"
+    ? "https://echosome.tk:9443"
+    : "http://localhost:1323";
+
 export const req = axios.create({ baseURL: "https://echosome.tk:9443" });
-// localhost:1323
-// echosome.tk
+
 const START = "_start";
 const FAIL = "_fail";
 
@@ -17,7 +23,7 @@ export const apiAction = async (
     console.log(request.data);
     const res = await req.post(request.dir, request.data).catch(e => {
       dispatch({ type: type + FAIL });
-      reject("fail" + (e.response && e.response.data.state));
+      reject("fail");
     });
     if (res) {
       dispatch({ type, payload: { ...res.data } });

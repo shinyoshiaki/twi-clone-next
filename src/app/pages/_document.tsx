@@ -23,7 +23,15 @@ export default class MyDocument extends Document<{ css: any }> {
           <title>Twitter clone</title>
           <style dangerouslySetInnerHTML={{ __html: this.props.css }} />
         </Head>
-        <body>
+        <body
+          style={{
+            height: "100vh",
+            width: "100vw",
+            overflow: "hidden",
+            padding: 0,
+            margin: 0
+          }}
+        >
           <Main />
           <NextScript />
         </body>

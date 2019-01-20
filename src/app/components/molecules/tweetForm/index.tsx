@@ -18,7 +18,7 @@ export default class TweetFormMol extends React.Component<
   }
 
   render() {
-    const { submit, name, code, style } = this.props;
+    const { submit, style } = this.props;
     return (
       <div style={style}>
         <div style={{ textAlign: "center" }}>Tweet</div>

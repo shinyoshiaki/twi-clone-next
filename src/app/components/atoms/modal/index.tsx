@@ -49,7 +49,7 @@ class ModalAtom extends React.Component<
             }
           }}
         >
-          <div style={{ width: "150vh" }}>{Content(this.close)}</div>
+          <div>{Content(this.close)}</div>
         </Modal>
       </div>
     );
