@@ -20,9 +20,9 @@ const START = "_start";
 const FAIL = "_fail";
 
 enum ActionName {
-  POST = "POST",
-  GET = "GET",
-  SEARCH = "SEARCH"
+  POST = "TWEET_POST",
+  GET = "TWEET_GET",
+  SEARCH = "TWEET_SEARCH"
 }
 
 interface Post extends Action {

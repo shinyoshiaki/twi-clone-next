@@ -87,6 +87,7 @@ class LayoutOrg extends React.Component<Props, {}> {
                   />
                 )}
               />
+              <Button onClick={() => router.push(`/`)}>logout</Button>
             </div>
           </div>
           <Divider />

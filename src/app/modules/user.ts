@@ -18,9 +18,9 @@ const START = "_start";
 const FAIL = "_fail";
 
 enum ActionName {
-  SIGNUP = "SIGNUP",
-  LOGIN = "LOGIN",
-  UPDATE = "UPDATE"
+  SIGNUP = "USER_SIGNUP",
+  LOGIN = "USER_LOGIN",
+  UPDATE = "USER_UPDATE"
 }
 
 type Actions = SignUpSuccess | LoginSuccess | UpdateSuccess;
